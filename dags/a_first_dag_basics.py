@@ -12,7 +12,7 @@ def _extract_var(partner_name):
     print(f"partner name is : {partner_name}")
     
 
-with DAG("1_dag_first",
+with DAG(dag_id="a_first_dag_basics",
          description="first video from astronomer",
          start_date=datetime(2022,3,1),
          schedule_interval="1 12 * * *",  # timedelta(minutes=5)), @daily, @weekly; also available
@@ -24,7 +24,7 @@ with DAG("1_dag_first",
          extract = PythonOperator(
              task_id="get_airflow_variable",
              python_callable = _extract_var,
-             op_args=["{{ var.json.my_dag_partner.name }}"]  # jinja templating engine
+             op_args=["{{ var.json.my_dag_partner.name }}"]  # jinja templating engine avoids connection being made to db all the time
          )
 
          fetch_data = CustomPostgresOperator(

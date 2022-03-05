@@ -26,3 +26,12 @@ astro dev ps
 ```
 astro dev stop
 ```
+
+## Some airflow CLI Commands
+```
+# Backfilling
+airflow dags backfill -s 2022-01-01 -e 2022-01-30
+# Run a task
+airflow tasks test my_dag_name task_name 2021-01-01 # date is the "dag run" date
+airflow tasks test my_dag_name task_name 2021-01-01
+```
