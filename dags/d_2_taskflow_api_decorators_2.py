@@ -27,4 +27,4 @@ def d_taskflow_fetch_api_example():
 
     store_data(process_data(extract_bitcoin_price()))
 
-dag = e_taskflow_fetch_api_example()
+dag = d_taskflow_fetch_api_example()
