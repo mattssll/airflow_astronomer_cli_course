@@ -1,8 +1,10 @@
-from subdag.f_2_subdag_factory import subdag
 from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.subdag import SubDagOperator
 from airflow.utils.dates import days_ago
+
+from subdag.f_2_subdag_factory import subdag
+
 
 DAG_NAME = 'f_1_subdag_main'
 

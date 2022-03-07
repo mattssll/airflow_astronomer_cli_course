@@ -3,8 +3,10 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.decorators import task, dag
 from airflow.utils.task_group import TaskGroup
-from groups.process_tasks import process_tasks
 from datetime import datetime
+
+from groups.g_2_process_tasks import process_tasks
+
 
 @task.python(task_id="extract_partners", do_xcom_push=False, multiple_outputs=True)
 def extract():
