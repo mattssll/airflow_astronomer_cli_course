@@ -1,5 +1,5 @@
 from airflow.decorators import dag, task
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict
 import requests
 import logging
@@ -8,7 +8,7 @@ import logging
 API = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true"
 
 
-@dag(schedule_interval='@daily', start_date=datetime(2021, 12, 1), catchup=False)
+@dag(schedule_interval='@daily', start_date=datetime(2021, 12, 1), catchup=False, dagrun_timeout = timedelta(minutes=30))
 def d_taskflow_fetch_api_example():
 
     @task(task_id='extract', retries=2)

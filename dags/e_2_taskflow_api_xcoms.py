@@ -16,7 +16,7 @@ def process(my_xcoms):
     print(f"printing xcoms: {my_xcoms['value_1']}, {my_xcoms['value_2']}, {my_xcoms['value_3']}")
         
 
-@dag(schedule_interval='@daily', start_date=datetime(2021, 12, 1), catchup=False)
+@dag(schedule_interval='@daily', start_date=datetime(2021, 12, 1), catchup=False, dagrun_timeout = timedelta(minutes=30))
 def e_taskflow_xcoms_2():
 
     process(extract())

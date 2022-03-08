@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.subdag import SubDagOperator
 from airflow.utils.dates import days_ago
+from datetime import datetime, timedelta
 
 from subdag.f_2_subdag_factory import subdag
 
@@ -13,6 +14,7 @@ with DAG(
     default_args={"retries": 2},
     start_date=days_ago(2),
     schedule_interval="@once",
+    # dagrun_timeout = timedelta(minutes=30)
 ) as dag:
 
     start = DummyOperator(
@@ -38,5 +40,4 @@ with DAG(
     )
 
     start >> section_1 >> some_other_task >> section_2 >> end
-# [END example_subdag_operator]
 

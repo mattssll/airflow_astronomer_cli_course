@@ -5,7 +5,7 @@ from datetime import timedelta, datetime
 
     
 # 2. Defining our DAG
-@dag(start_date=datetime(2022,3,1), schedule_interval="1 12 * * *", catchup = False)
+@dag(start_date=datetime(2022,3,1), schedule_interval="1 12 * * *", catchup = False, dagrun_timeout = timedelta(minutes=30))
 def d_taskflow_api():
     @task.python
     def extract():

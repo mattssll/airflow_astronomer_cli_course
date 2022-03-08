@@ -32,6 +32,7 @@ with DAG('a_0_example_dag',
          max_active_runs=3,
          schedule_interval=timedelta(minutes=30),  # https://airflow.apache.org/docs/stable/scheduler.html#dag-runs
          default_args=default_args,
+         dagrun_timeout = timedelta(minutes=30)
          # catchup=False # enable if you don't want historical dag runs to run
          ) as dag:
 
