@@ -3,3 +3,4 @@
 airflow_settings.yaml
 pod-config.yml
 .DS_Store
+__pycache__
